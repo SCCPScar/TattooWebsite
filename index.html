@@ -331,14 +331,11 @@
   }
   .more-link:hover{color:var(--gold-soft);border-color:var(--gold-soft);}
 
-  /* ---------- piercing & curso ---------- */
-  .gallery-group + .gallery-group{margin-top:48px;}
-  .subgroup-title{
-    font-family:'Abril Fatface', serif;
-    font-weight:400;
-    font-size:1.15rem;
-    color:var(--gold-soft);
-    margin:0 0 20px;
+  /* ---------- curso ---------- */
+  .subgroup-note{
+    font-size:13px;
+    color:var(--muted);
+    margin:-24px 0 28px;
   }
 
   /* ---------- services ---------- */
@@ -385,7 +382,8 @@
     <a href="#sobre">Sobre</a>
     <a href="#portfolio">Portf&oacute;lio</a>
     <a href="#servicos">Servi&ccedil;os</a>
-    <a href="#piercing-curso">Piercing &amp; Curso</a>
+    <a href="#piercing">Piercing</a>
+    <a href="#curso">Curso</a>
     <a href="#processo">Como funciona</a>
     <a href="#contacto">Contacto</a>
   </div>
@@ -400,7 +398,7 @@
         <p class="eyebrow">Est&uacute;dio de tatuagem &middot; Almada, Portugal</p>
         <h1 class="logotype">JK Tattoo</h1>
         <p class="hero-sub">&amp; BODY PIERCING</p>
-        <p class="tagline">Ink your soul. Expresse sua verdade.</p>
+        <p class="tagline">Cada tatuagem conta uma história diferente.</p>
         <div class="hero-actions">
           <a class="btn-primary" href="https://wa.me/351938696466?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20marcar%20uma%20tatuagem." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
           <a class="text-link" href="#portfolio">Ver portf&oacute;lio</a>
@@ -425,9 +423,9 @@
             <h2>Sobre</h2>
           </div>
           <p class="about-quote">
-            [ Espa&ccedil;o reservado para a hist&oacute;ria da Jhuly e do JK Tattoo &mdash; como come&ccedil;ou, o que inspira o trabalho e o que torna o est&uacute;dio especial. ]
+            [ Espa&ccedil;o reservado para a hist&oacute;ria da Jhuly e do JK Tattoo: como come&ccedil;ou, o que inspira o trabalho e o que torna o est&uacute;dio especial. ]
           </p>
-          <p class="about-note">Texto por confirmar &mdash; substitui aqui quando tiveres o texto definitivo.</p>
+          <p class="about-note">Texto provis&oacute;rio. Substitui aqui quando tiveres o texto definitivo.</p>
         </div>
         <div class="about-frame">
           <img src="images/portfolio/portfolio-floral-03.jpg" alt="Detalhe de tatuagem fine line de flores e borboletas do estúdio JK Tattoo">
@@ -780,7 +778,7 @@
           <span class="chip">Lettering</span>
         </figure>
         <figure class="frame" data-cat="lettering">
-          <div class="pic"><img src="images/portfolio/portfolio-lettering-21.jpg" alt="&quot;Enquanto eu existir.../Você nunca estará sá&quot; casal antebraço" loading="lazy"></div>
+          <div class="pic"><img src="images/portfolio/portfolio-lettering-21.jpg" alt="&quot;Enquanto eu existir.../Você nunca estará só&quot; casal antebraço" loading="lazy"></div>
           <span class="chip">Lettering</span>
         </figure>
         <figure class="frame" data-cat="lettering">
@@ -813,26 +811,23 @@
         </div>
         <div class="service-row">
           <h3>Piercing</h3>
-          <p>Material esterilizado e atendimento individual, do primeiro furo &agrave;s combina&ccedil;&otilde;es mais elaboradas.</p>
+          <p>Material esterilizado e atendimento individual, seja no primeiro furo ou numa combina&ccedil;&atilde;o mais elaborada de joias.</p>
         </div>
         <div class="service-row">
           <h3>Curso de Body Piercing</h3>
-          <p>Forma&ccedil;&atilde;o do zero ao profissional, para quem quer transformar a t&eacute;cnica em carreira.</p>
+          <p>Aulas te&oacute;ricas e pr&aacute;ticas para quem quer aprender a t&eacute;cnica e transform&aacute;-la em profiss&atilde;o.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="piercing-curso" class="reveal">
+  <section id="piercing" class="reveal">
     <div class="shell">
       <div class="section-head">
         <span class="kicker">Body Piercing</span>
-        <h2>Piercing &amp; Curso</h2>
+        <h2>Piercing</h2>
       </div>
-
-      <div class="gallery-group">
-        <h3 class="subgroup-title">Piercing</h3>
-        <div class="gallery">
+      <div class="gallery">
         <figure class="frame">
           <div class="pic"><img src="images/piercing/piercing-01.jpg" alt="Piercing de umbigo com joia cristal" loading="lazy"></div>
         </figure>
@@ -854,12 +849,18 @@
         <figure class="frame">
           <div class="pic"><img src="images/piercing/piercing-07.jpg" alt="Piercing de tragus e alargador na orelha" loading="lazy"></div>
         </figure>
-        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="gallery-group">
-        <h3 class="subgroup-title">Curso de Body Piercing</h3>
-        <div class="gallery">
+  <section id="curso" class="reveal">
+    <div class="shell">
+      <div class="section-head">
+        <span class="kicker">Forma&ccedil;&atilde;o</span>
+        <h2>Curso de Body Piercing</h2>
+      </div>
+      <p class="subgroup-note">Alunas e alunos j&aacute; formados, com o certificado de conclus&atilde;o do curso.</p>
+      <div class="gallery">
         <figure class="frame">
           <div class="pic"><img src="images/curso/curso-01.jpg" alt="Aluna Liliana Neves com certificado de conclusão do Curso de Body Piercing" loading="lazy"></div>
         </figure>
@@ -884,7 +885,6 @@
         <figure class="frame">
           <div class="pic"><img src="images/curso/curso-08.jpg" alt="Aluna Teresa Costa com certificado de conclusão do Curso de Body Piercing" loading="lazy"></div>
         </figure>
-        </div>
       </div>
     </div>
   </section>
@@ -896,7 +896,7 @@
         <h2>Como funciona</h2>
       </div>
       <p class="process-text">
-        Come&ccedil;a por <b>contar a tua ideia</b> pelo WhatsApp ou Instagram. A partir da&iacute;, alinhamos refer&ecirc;ncias, tamanho e local do corpo numa <b>marca&ccedil;&atilde;o</b>. No <b>dia da sess&atilde;o</b>, a tatuagem &eacute; feita com calma, num ambiente limpo e cuidado &mdash; e no final recebes as instru&ccedil;&otilde;es de <b>cicatriza&ccedil;&atilde;o</b> para o resultado durar bem.
+        Come&ccedil;a por <b>contar a tua ideia</b> pelo WhatsApp ou Instagram. A partir da&iacute;, alinhamos refer&ecirc;ncias, tamanho e local do corpo numa <b>marca&ccedil;&atilde;o</b>. No <b>dia da sess&atilde;o</b>, a tatuagem &eacute; feita com calma, num ambiente limpo e cuidado. No final, recebes as instru&ccedil;&otilde;es de <b>cicatriza&ccedil;&atilde;o</b> para o resultado durar bem.
       </p>
     </div>
   </section>
