@@ -364,6 +364,13 @@
   .link-row a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:color .15s, border-color .15s;}
   .link-row a:hover{color:var(--gold-soft);border-color:var(--gold-soft);}
   .link-row .sep{color:var(--line);}
+  .map-frame{
+    margin-top:40px;
+    border:1px solid var(--line);
+    overflow:hidden;
+    aspect-ratio:16/7;
+  }
+  .map-frame iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(0.35) contrast(1.05);}
 
   /* ---------- footer ---------- */
   footer{padding:44px 24px;border-top:1px solid var(--line);text-align:center;}
@@ -931,6 +938,9 @@
           </div>
         </div>
       </div>
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=Rua+Jo%C3%A3o+Gomes+de+Abreu+21B+Feij%C3%B3+Almada+Portugal&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localiza&ccedil;&atilde;o do JK Tattoo no Google Maps"></iframe>
+      </div>
     </div>
   </section>
 
@@ -949,7 +959,7 @@
         entries.forEach(function(e){
           if (e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
         });
-      }, {threshold:0.12});
+      }, {threshold:0, rootMargin:'0px 0px -10% 0px'});
       els.forEach(function(el){ io.observe(el); });
     }
 
