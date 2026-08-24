@@ -84,11 +84,53 @@
   .nav-links{display:flex;gap:34px;overflow-x:auto;scrollbar-width:none;flex:1;justify-content:center;}
   .nav-links::-webkit-scrollbar{display:none;}
   .nav-links a{font-family:'Pirata One', 'Archivo', serif;font-size:19px;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .15s ease;}
-  @media (max-width:680px){
-    .nav-links{justify-content:flex-start;gap:16px;}
-    .nav-links a{font-size:14px;}
-  }
   .nav-links a:hover{color:var(--gold-soft);}
+  .nav-toggle{
+    display:none;
+    flex:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    width:36px;height:36px;
+    padding:8px;
+    background:none;
+    border:none;
+    cursor:pointer;
+  }
+  .nav-toggle span{
+    display:block;
+    width:100%;height:2px;
+    background:var(--gold-soft);
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media (max-width:1040px){
+    .nav{padding:16px 20px;}
+    .nav-toggle{display:flex;}
+    .nav-links{
+      position:absolute;
+      top:100%;left:0;right:0;
+      flex-direction:column;
+      align-items:stretch;
+      gap:0;
+      justify-content:flex-start;
+      overflow-x:hidden;
+      max-height:0;
+      background:rgba(17,13,13,.97);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+      transition:max-height .3s ease;
+    }
+    .nav-links.open{max-height:70vh;overflow-y:auto;}
+    .nav-links a{
+      font-size:17px;
+      padding:14px 24px;
+      border-top:1px solid var(--line);
+    }
+  }
   .nav-cta{
     flex:none;
     font-size:13px;
@@ -497,7 +539,7 @@
     <img src="images/logo-jk-tattoo.jpg" alt="JK Tattoo">
     <span>JK Tattoo</span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="navLinks">
     <a href="#sobre">Sobre</a>
     <a href="#portfolio">Portf&oacute;lio</a>
     <a href="#servicos">Servi&ccedil;os</a>
@@ -507,6 +549,9 @@
     <a href="#contacto">Contacto</a>
   </div>
   <a class="nav-cta" href="https://wa.me/351938696466?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20marcar%20uma%20tatuagem." target="_blank" rel="noopener">Agendar</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks" type="button">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <header class="hero" id="top">
@@ -1049,6 +1094,24 @@
       frames.forEach(function(fig, i){
         fig.style.transitionDelay = (i % 5) * 70 + 'ms';
         frameIo.observe(fig);
+      });
+    }
+
+    var navToggle = document.getElementById('navToggle');
+    var navLinks = document.getElementById('navLinks');
+    if (navToggle && navLinks){
+      function closeNav(){
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+      navToggle.addEventListener('click', function(){
+        var isOpen = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', closeNav);
       });
     }
 
