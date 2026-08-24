@@ -360,9 +360,26 @@
     overflow:hidden;
     background:var(--ink-2);
   }
-  figure.frame.hide{
+  figure.frame.hide,
+  figure.frame.hide-more{
     display:none;
   }
+  .load-more-btn{
+    display:block;
+    margin:30px auto 0;
+    padding:12px 30px;
+    background:none;
+    border:1px solid var(--line);
+    color:var(--paper);
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .load-more-btn:hover{border-color:var(--gold);color:var(--gold-soft);}
+  .load-more-btn.is-hidden{display:none;}
   figure.frame .pic{aspect-ratio:1/1;height:100%;}
   figure.frame img{
     width:100%;height:100%;
@@ -872,6 +889,7 @@
           <div class="pic"><img src="images/portfolio/portfolio-lettering-21.jpg" alt="&quot;Enquanto eu existir.../Você nunca estará só&quot; casal antebraço" loading="lazy"></div>
         </figure>
       </div>
+      <button class="load-more-btn" id="loadMoreBtn" type="button">Ver mais fotos</button>
       <a class="more-link" href="https://www.instagram.com/jhuly_studios" target="_blank" rel="noopener">Ver o portf&oacute;lio completo no Instagram &rarr;</a>
     </div>
   </section>
@@ -1118,6 +1136,10 @@
     var tabs = document.querySelectorAll('#tabs .tab');
     var indicator = document.getElementById('tabIndicator');
     var figures = document.querySelectorAll('#gallery .frame');
+    var loadMoreBtn = document.getElementById('loadMoreBtn');
+    var BATCH_SIZE = 12;
+    var visibleCount = BATCH_SIZE;
+    var currentFilter = 'all';
 
     function moveIndicator(btn){
       if (!indicator || !btn) return;
@@ -1125,11 +1147,21 @@
       indicator.style.width = btn.offsetWidth + 'px';
     }
 
-    function applyFilter(filter){
+    function updateVisibility(){
+      var shown = 0;
       figures.forEach(function(fig){
-        var match = filter === 'all' || fig.getAttribute('data-cat') === filter;
+        var match = currentFilter === 'all' || fig.getAttribute('data-cat') === currentFilter;
         fig.classList.toggle('hide', !match);
+        if (match){
+          fig.classList.toggle('hide-more', shown >= visibleCount);
+          shown++;
+        } else {
+          fig.classList.remove('hide-more');
+        }
       });
+      if (loadMoreBtn){
+        loadMoreBtn.classList.toggle('is-hidden', shown <= visibleCount);
+      }
     }
 
     tabs.forEach(function(btn){
@@ -1137,9 +1169,20 @@
         tabs.forEach(function(b){ b.classList.remove('active'); });
         btn.classList.add('active');
         moveIndicator(btn);
-        applyFilter(btn.getAttribute('data-filter'));
+        currentFilter = btn.getAttribute('data-filter');
+        visibleCount = BATCH_SIZE;
+        updateVisibility();
       });
     });
+
+    if (loadMoreBtn){
+      loadMoreBtn.addEventListener('click', function(){
+        visibleCount += BATCH_SIZE;
+        updateVisibility();
+      });
+    }
+
+    updateVisibility();
 
     var activeTab = document.querySelector('#tabs .tab.active');
     window.addEventListener('load', function(){ moveIndicator(activeTab); });
